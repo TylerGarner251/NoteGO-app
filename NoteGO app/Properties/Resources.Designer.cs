@@ -63,9 +63,39 @@ namespace NoteGO_app.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap background {
+            get {
+                object obj = ResourceManager.GetObject("background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap backgroundcream {
+            get {
+                object obj = ResourceManager.GetObject("backgroundcream", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap backgroundwhite {
+            get {
+                object obj = ResourceManager.GetObject("backgroundwhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_bin_62 {
             get {
-                object obj = ResourceManager.GetObject("icons8-bin-62", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_bin_62", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -75,7 +105,7 @@ namespace NoteGO_app.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_binocular_64 {
             get {
-                object obj = ResourceManager.GetObject("icons8-binocular-64", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_binocular_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,7 +115,47 @@ namespace NoteGO_app.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_floppy_disk_68 {
             get {
-                object obj = ResourceManager.GetObject("icons8-floppy-disk-68", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_floppy_disk_68", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_gear_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_gear_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon icons8_note_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_note_100", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon icons8_note_1001 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_note_1001", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_note_1002 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_note_1002", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -95,7 +165,7 @@ namespace NoteGO_app.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_note_96 {
             get {
-                object obj = ResourceManager.GetObject("icons8-note-96", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_note_96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

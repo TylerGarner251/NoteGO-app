@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
 namespace NoteGO_app
 {
     public partial class NoteForm : Form
@@ -29,7 +29,7 @@ namespace NoteGO_app
             //note columns become invisiable and title coloumn matchs the databox size
             Table.DataSource = table;
             Table.Columns["Note"].Visible = false;
-            Table.Columns["Title"].Width = 290;
+            Table.Columns["Title"].Width = 169;
         }
         private void TitleBox_TextChanged(object sender, EventArgs e)
         {
@@ -56,6 +56,12 @@ namespace NoteGO_app
         private void SaveButton_ButtonClick(object sender, EventArgs e)
         {
             //addes a new row to the data table and inserts the titlebox and notebox
+            string path = @"C:\Users\tyler\source\repos\NoteGO app\NoteGO app\"+TitleBox.Text+".txt";
+            using (FileStream fs = File.Create(path)) { }
+            using (StreamWriter writer = new StreamWriter(path))
+            {
+                writer.WriteLine(NotesBox.Text);
+            }
             table.Rows.Add(TitleBox.Text, NotesBox.Text);
             TitleBox.Clear();
             NotesBox.Clear();
@@ -67,6 +73,7 @@ namespace NoteGO_app
             int index = Table.CurrentCell.RowIndex;
             if (index > -1)
             {
+
                 TitleBox.Text = table.Rows[index].ItemArray[0].ToString();
                 NotesBox.Text = table.Rows[index].ItemArray[1].ToString();
             }
@@ -82,6 +89,72 @@ namespace NoteGO_app
         private void MenuBar_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void NotesLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void VisualButton_ButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void darkModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NotesBox.BackColor = Color.FromArgb(0,0,64);
+            NotesBox.ForeColor = Color.White;
+            TitleBox.BackColor = Color.FromArgb(0, 0, 64);
+            TitleBox.ForeColor = Color.White;
+            Table.BackgroundColor = Color.FromArgb(0, 0, 64);
+            BackgroundCream.Visible = false;
+            BackgroundWhite.Visible = false;
+            TitleLabel.BackColor = Color.FromArgb(0, 0, 64);
+            NotesLabel.BackColor = Color.FromArgb(0, 0, 64);
+            label1.BackColor = Color.FromArgb(0, 0, 64);
+            TitleLabel.ForeColor = Color.White;
+            NotesLabel.ForeColor = Color.White;
+            label1.ForeColor = Color.White;
+        }
+
+        private void lightModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NotesBox.BackColor = Color.LightGray;
+            NotesBox.ForeColor = Color.Black;
+            TitleBox.BackColor = Color.LightGray;
+            TitleBox.ForeColor = Color.Black;
+            Table.BackgroundColor = Color.LightGray;
+            BackgroundCream.Visible = false;
+            BackgroundWhite.Visible = true;
+            TitleLabel.BackColor = Color.FromArgb(237, 237, 237);
+            NotesLabel.BackColor = Color.FromArgb(237, 237, 237);
+            label1.BackColor = Color.FromArgb(237, 237, 237);
+            TitleLabel.ForeColor = Color.Black;
+            NotesLabel.ForeColor = Color.Black;
+            label1.ForeColor = Color.Black;
+        }
+
+        private void positnoteModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NotesBox.BackColor = Color.PapayaWhip;
+            NotesBox.ForeColor = Color.Black;
+            TitleBox.BackColor = Color.PapayaWhip;
+            TitleBox.ForeColor = Color.Black;
+            Table.BackgroundColor = Color.PapayaWhip;
+            BackgroundCream.Visible = true;
+            BackgroundWhite.Visible = false;
+            TitleLabel.BackColor = Color.FromArgb(253,236,166);
+            NotesLabel.BackColor = Color.FromArgb(253, 236, 166);
+            label1.BackColor = Color.FromArgb(253, 236, 166);
+            TitleLabel.ForeColor = Color.Black;
+            NotesLabel.ForeColor = Color.Black;
+            label1.ForeColor = Color.Black;
         }
     }
 }
