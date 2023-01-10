@@ -12,6 +12,7 @@ namespace NoteGO_app
 {
     public partial class NoteForm : Form
     {
+        
         //Converts the datatbale into a variable to easy purpose in calling
         DataTable table;
         public NoteForm()
@@ -77,29 +78,57 @@ namespace NoteGO_app
 
         private void SaveButton_ButtonClick(object sender, EventArgs e)
         {
-            //addes a new row to the data table and inserts the titlebox and notebox
-            string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + TitleBox.Text + ".txt"; // checks the path and saves into that path
-            using (FileStream fs = File.Create(Savepath)) { }
-            using (StreamWriter writer = new StreamWriter(Savepath))
+            string CheckingSavePath = AppDomain.CurrentDomain.BaseDirectory + @"\" + TitleBox.Text;
+            if (File.Exists(CheckingSavePath) == true)
             {
-                writer.WriteLine(NotesBox.Text);
+                StreamWriter strm = File.CreateText(CheckingSavePath);
+                strm.Flush();
+                strm.Close();
+                File.AppendAllText(CheckingSavePath, NotesBox.Text);
+                MessageBox.Show("Saved | The Note " + TitleBox.Text + " was saved", "Saved");
+                TitleBox.Clear();
+                NotesBox.Clear();
             }
-            table.Rows.Add(TitleBox.Text, NotesBox.Text);
-            TitleBox.Clear();
-            NotesBox.Clear();
+            else if(File.Exists(CheckingSavePath) == false)
+            {
+                //addes a new row to the data table and inserts the titlebox and notebox
+                string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + TitleBox.Text + ".txt"; // checks the path and saves into that path
+                using (FileStream fs = File.Create(Savepath)) { }
+                using (StreamWriter writer = new StreamWriter(Savepath))
+                {
+                    writer.WriteLine(NotesBox.Text);
+                }
+                table.Rows.Add(TitleBox.Text, NotesBox.Text);
+                MessageBox.Show("Saved | The Note '" + TitleBox.Text + "' was saved", "Saved");
+                TitleBox.Clear();
+                NotesBox.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Error | Cannot save file", "Error");
+            }
         }
 
         private void ReadButton_ButtonClick(object sender, EventArgs e)
         {
-            // checks what is selected in the database and addes the title and notes to the not and title boxes
-            int index = Table.CurrentCell.RowIndex;
-            if (index > -1)
+                // checks what is selected in the database and addes the title and notes to the not and title boxes
+                int index = Table.CurrentCell.RowIndex;
+            try
+            {
+                if (index > -1)
+                {
+                    String titleVar = table.Rows[index].ItemArray[0].ToString();
+                    string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar;
+                    TitleBox.Text = Path.GetFileName(Savepath);
+                    NotesBox.Text = File.ReadAllText(Savepath);
+                }
+            }
+            catch
             {
                 String titleVar = table.Rows[index].ItemArray[0].ToString();
-                string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar;
+                string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar + ".txt";
                 TitleBox.Text = Path.GetFileName(Savepath);
                 NotesBox.Text = File.ReadAllText(Savepath);
-
             }
         }
 
@@ -107,6 +136,9 @@ namespace NoteGO_app
         {
             // checks what is selected and deletes the data.
             int index = Table.CurrentCell.RowIndex;
+            String titleVar = table.Rows[index].ItemArray[0].ToString();
+            string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar;
+            File.Delete(Savepath);
             table.Rows[index].Delete();
         }
 
