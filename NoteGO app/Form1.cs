@@ -30,6 +30,28 @@ namespace NoteGO_app
             Table.DataSource = table;
             Table.Columns["Note"].Visible = false;
             Table.Columns["Title"].Width = 169;
+
+            try
+            {
+                DirectoryInfo d = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory + @"\"); //Assuming Test is your Folder
+
+                FileInfo[] Files = d.GetFiles("*.txt"); //Getting Text files
+                string tableFileNames = "";
+
+                foreach (FileInfo file in Files)
+                {
+                    tableFileNames = file.Name;
+                    TitleBox.Text = tableFileNames;
+                    table.Rows.Add(TitleBox.Text, NotesBox.Text);
+                    TitleBox.Clear();
+                }
+
+            }
+            catch
+            {
+
+            }
+
         }
         private void TitleBox_TextChanged(object sender, EventArgs e)
         {
@@ -56,9 +78,9 @@ namespace NoteGO_app
         private void SaveButton_ButtonClick(object sender, EventArgs e)
         {
             //addes a new row to the data table and inserts the titlebox and notebox
-            string path = @"C:\Users\tyler\source\repos\NoteGO app\NoteGO app\"+TitleBox.Text+".txt";
-            using (FileStream fs = File.Create(path)) { }
-            using (StreamWriter writer = new StreamWriter(path))
+            string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + TitleBox.Text + ".txt"; // checks the path and saves into that path
+            using (FileStream fs = File.Create(Savepath)) { }
+            using (StreamWriter writer = new StreamWriter(Savepath))
             {
                 writer.WriteLine(NotesBox.Text);
             }
@@ -73,9 +95,11 @@ namespace NoteGO_app
             int index = Table.CurrentCell.RowIndex;
             if (index > -1)
             {
+                String titleVar = table.Rows[index].ItemArray[0].ToString();
+                string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar;
+                TitleBox.Text = Path.GetFileName(Savepath);
+                NotesBox.Text = File.ReadAllText(Savepath);
 
-                TitleBox.Text = table.Rows[index].ItemArray[0].ToString();
-                NotesBox.Text = table.Rows[index].ItemArray[1].ToString();
             }
         }
 
