@@ -61,8 +61,11 @@ namespace NoteGO_app
             }
             catch
             {
+                string subPath = "Settings";
+                Directory.CreateDirectory(subPath);
                 string settingsLoader = AppDomain.CurrentDomain.BaseDirectory + @"Settings\Settings.txt";
                 File.Create(settingsLoader);
+                
             }
 
         }
