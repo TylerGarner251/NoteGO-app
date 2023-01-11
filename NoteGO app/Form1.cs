@@ -11,27 +11,22 @@ using System.IO;
 namespace NoteGO_app
 {
     public partial class NoteForm : Form
-    {
-        
-        //Converts the datatbale into a variable to easy purpose in calling
+    {//Converts the datatbale into a variable to easy purpose in calling
         DataTable table;
         public NoteForm()
         {
             InitializeComponent();
         }
         private void NoteForm_Load(object sender, EventArgs e)
-        {
-            //creates a new database
+        {//creates a new database
             table = new DataTable();
             //adds columns to the database and names them
             table.Columns.Add("Title", typeof(string));
             table.Columns.Add("Note", typeof(string));
-
             //note columns become invisiable and title coloumn matchs the databox size
             Table.DataSource = table;
             Table.Columns["Note"].Visible = false;
             Table.Columns["Title"].Width = 169;
-
             try
             {
                 DirectoryInfo d = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory + @"\"); //Assuming Test is your Folder
@@ -52,30 +47,26 @@ namespace NoteGO_app
             {
 
             }
-
         }
         private void TitleBox_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void NotesBox_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void Table_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
         private void Newbutton_ButtonClick(object sender, EventArgs e)
         {
             //clears the title text box and note box
             TitleBox.Clear();
             NotesBox.Clear();
+            TitleBox.Enabled = true;
         }
-
         private void SaveButton_ButtonClick(object sender, EventArgs e)
         {
             string CheckingSavePath = AppDomain.CurrentDomain.BaseDirectory + @"\" + TitleBox.Text;
@@ -108,11 +99,9 @@ namespace NoteGO_app
                 MessageBox.Show("Error | Cannot save file", "Error");
             }
         }
-
         private void ReadButton_ButtonClick(object sender, EventArgs e)
-        {
-                // checks what is selected in the database and addes the title and notes to the not and title boxes
-                int index = Table.CurrentCell.RowIndex;
+        {// checks what is selected in the database and addes the title and notes to the not and title boxes
+            int index = Table.CurrentCell.RowIndex;
             try
             {
                 if (index > -1)
@@ -121,6 +110,7 @@ namespace NoteGO_app
                     string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar;
                     TitleBox.Text = Path.GetFileName(Savepath);
                     NotesBox.Text = File.ReadAllText(Savepath);
+                    TitleBox.Enabled = false;
                 }
             }
             catch
@@ -129,9 +119,9 @@ namespace NoteGO_app
                 string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar + ".txt";
                 TitleBox.Text = Path.GetFileName(Savepath);
                 NotesBox.Text = File.ReadAllText(Savepath);
+                TitleBox.Enabled = false;
             }
         }
-
         private void DeleteButton_ButtonClick(object sender, EventArgs e)
         {
             // checks what is selected and deletes the data.
@@ -141,76 +131,52 @@ namespace NoteGO_app
             File.Delete(Savepath);
             table.Rows[index].Delete();
         }
-
         private void MenuBar_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }
-
         private void NotesLabel_Click(object sender, EventArgs e)
         {
 
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
-
         private void VisualButton_ButtonClick(object sender, EventArgs e)
         {
 
         }
-
+        private void ColourSets(int ForeColorRGB1, int ForeColorRGB2, int ForeColorRGB3,int BackColorRGB1,int BackColorRGB2,int BackColorRGB3, int WidgetBackColorRGB1, int WidgetBackColorRGB2, int WidgetBackColorRGB3, bool imageBool1, bool imageBool2)
+        {
+            //background colours
+            NotesBox.BackColor = Color.FromArgb(WidgetBackColorRGB1, WidgetBackColorRGB2, WidgetBackColorRGB3);
+            TitleBox.BackColor = Color.FromArgb(WidgetBackColorRGB1, WidgetBackColorRGB2, WidgetBackColorRGB3);
+            TitleLabel.BackColor = Color.FromArgb(BackColorRGB1, BackColorRGB2, BackColorRGB3);
+            NotesLabel.BackColor = Color.FromArgb(BackColorRGB1, BackColorRGB2, BackColorRGB3);
+            label1.BackColor = Color.FromArgb(BackColorRGB1, BackColorRGB2, BackColorRGB3);
+            Table.BackgroundColor = Color.FromArgb(WidgetBackColorRGB1, WidgetBackColorRGB2, WidgetBackColorRGB3);
+            //Text colours
+            NotesBox.ForeColor = Color.FromArgb(ForeColorRGB1, ForeColorRGB2, ForeColorRGB3);
+            TitleBox.ForeColor = Color.FromArgb(ForeColorRGB1, ForeColorRGB2, ForeColorRGB3);
+            TitleLabel.ForeColor = Color.FromArgb(ForeColorRGB1, ForeColorRGB2, ForeColorRGB3);
+            NotesLabel.ForeColor = Color.FromArgb(ForeColorRGB1, ForeColorRGB2, ForeColorRGB3);
+            label1.ForeColor = Color.FromArgb(ForeColorRGB1, ForeColorRGB2, ForeColorRGB3); // table label
+            //Background Image visibility
+            BackgroundCream.Visible = imageBool1;
+            BackgroundWhite.Visible = imageBool2;
+        }
         private void darkModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NotesBox.BackColor = Color.FromArgb(0,0,64);
-            NotesBox.ForeColor = Color.White;
-            TitleBox.BackColor = Color.FromArgb(0, 0, 64);
-            TitleBox.ForeColor = Color.White;
-            Table.BackgroundColor = Color.FromArgb(0, 0, 64);
-            BackgroundCream.Visible = false;
-            BackgroundWhite.Visible = false;
-            TitleLabel.BackColor = Color.FromArgb(0, 0, 64);
-            NotesLabel.BackColor = Color.FromArgb(0, 0, 64);
-            label1.BackColor = Color.FromArgb(0, 0, 64);
-            TitleLabel.ForeColor = Color.White;
-            NotesLabel.ForeColor = Color.White;
-            label1.ForeColor = Color.White;
+            ColourSets(255,255,255 ,0, 0, 64, 0, 0, 64, false, false);//white, darkblue, darkblue, backgroundcream false, background white false
         }
-
         private void lightModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NotesBox.BackColor = Color.LightGray;
-            NotesBox.ForeColor = Color.Black;
-            TitleBox.BackColor = Color.LightGray;
-            TitleBox.ForeColor = Color.Black;
-            Table.BackgroundColor = Color.LightGray;
-            BackgroundCream.Visible = false;
-            BackgroundWhite.Visible = true;
-            TitleLabel.BackColor = Color.FromArgb(237, 237, 237);
-            NotesLabel.BackColor = Color.FromArgb(237, 237, 237);
-            label1.BackColor = Color.FromArgb(237, 237, 237);
-            TitleLabel.ForeColor = Color.Black;
-            NotesLabel.ForeColor = Color.Black;
-            label1.ForeColor = Color.Black;
+            ColourSets(0, 0, 0, 237, 237, 237, 194, 194, 194, false, true);//Black, lightgray, backgroundcream false, background white false
         }
-
         private void positnoteModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NotesBox.BackColor = Color.PapayaWhip;
-            NotesBox.ForeColor = Color.Black;
-            TitleBox.BackColor = Color.PapayaWhip;
-            TitleBox.ForeColor = Color.Black;
-            Table.BackgroundColor = Color.PapayaWhip;
-            BackgroundCream.Visible = true;
-            BackgroundWhite.Visible = false;
-            TitleLabel.BackColor = Color.FromArgb(253,236,166);
-            NotesLabel.BackColor = Color.FromArgb(253, 236, 166);
-            label1.BackColor = Color.FromArgb(253, 236, 166);
-            TitleLabel.ForeColor = Color.Black;
-            NotesLabel.ForeColor = Color.Black;
-            label1.ForeColor = Color.Black;
+            ColourSets(0, 0, 0, 253, 236, 166, 253, 222, 149, true, false);//Black, lightgray, backgroundcream false, background white false
         }
     }
 }
