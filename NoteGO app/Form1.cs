@@ -22,6 +22,7 @@ namespace NoteGO_app
             Table.DataSource = table;
             Table.Columns["Note"].Visible = false;
             Table.Columns["Title"].Width = 169;
+            DeleteButton.Enabled = false;
             try
             {
                 #region settings Loader
@@ -42,7 +43,7 @@ namespace NoteGO_app
 
                 }
                 #endregion
-
+                #region Adding Files to List
                 DirectoryInfo root = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory + @"\"); //Assuming Test is your Folder
 
                 FileInfo[] Files = root.GetFiles("*.txt"); //Getting Text files
@@ -50,18 +51,20 @@ namespace NoteGO_app
 
                 foreach (FileInfo file in Files)
                 {
+                    DeleteButton.Enabled = true;
                     tableFileNames = file.Name;
                     TitleBox.Text = tableFileNames;
                     table.Rows.Add(TitleBox.Text, NotesBox.Text);
                     TitleBox.Clear();
                 }
-
+                #endregion
             }
             catch
             {
                 string settingsLoader = AppDomain.CurrentDomain.BaseDirectory + @"Settings\Settings.txt";
                 File.Create(settingsLoader);
             }
+
         }
         private void TitleBox_TextChanged(object sender, EventArgs e)
         {
@@ -92,6 +95,7 @@ namespace NoteGO_app
                 strm.Close();
                 File.AppendAllText(CheckingSavePath, NotesBox.Text);
                 MessageBox.Show("Saved | The Note " + TitleBox.Text + " was saved", "Saved");
+                DeleteButton.Enabled = true;
                 TitleBox.Clear();
                 NotesBox.Clear();
             }
@@ -103,6 +107,7 @@ namespace NoteGO_app
                 File.WriteAllText(Savepath, NotesBox.Text);
                 table.Rows.Add(TitleBox.Text, NotesBox.Text);
                 MessageBox.Show("Saved | The Note '" + TitleBox.Text + "' was saved", "Saved");
+                DeleteButton.Enabled = true;
                 TitleBox.Clear();
                 NotesBox.Clear();
             }
@@ -135,13 +140,22 @@ namespace NoteGO_app
             }
         }
         private void DeleteButton_ButtonClick(object sender, EventArgs e)
-        {
-            // checks what is selected and deletes the data.
-            int index = Table.CurrentCell.RowIndex;
-            String titleVar = table.Rows[index].ItemArray[0].ToString();
-            string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar;
-            File.Delete(Savepath);
-            table.Rows[index].Delete();
+        {// checks what is selected and deletes the data.
+            try
+            {
+                int index = Table.CurrentCell.RowIndex;
+                String titleVar = table.Rows[index].ItemArray[0].ToString();
+                string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar;
+                File.Delete(Savepath);
+                string Savepath2 = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar + ".txt";
+                File.Delete(Savepath2);
+                table.Rows[index].Delete();
+            }
+            catch
+            {
+                MessageBox.Show("Error");
+            }
+
         }
         private void MenuBar_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
