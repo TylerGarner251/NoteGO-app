@@ -135,7 +135,7 @@ namespace NoteGO_app
             this.VisualButton});
             this.MenuBar.Location = new System.Drawing.Point(0, 0);
             this.MenuBar.Name = "MenuBar";
-            this.MenuBar.Size = new System.Drawing.Size(635, 31);
+            this.MenuBar.Size = new System.Drawing.Size(635, 29);
             this.MenuBar.Stretch = false;
             this.MenuBar.TabIndex = 7;
             this.MenuBar.Text = "statusStrip1";
@@ -144,40 +144,48 @@ namespace NoteGO_app
             // Newbutton
             // 
             this.Newbutton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Newbutton.DropDownButtonWidth = 0;
             this.Newbutton.Image = global::NoteGO_app.Properties.Resources.icons8_note_96;
             this.Newbutton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Newbutton.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.Newbutton.Name = "Newbutton";
-            this.Newbutton.Size = new System.Drawing.Size(41, 29);
+            this.Newbutton.Size = new System.Drawing.Size(30, 29);
             this.Newbutton.Text = "toolStripSplitButton1";
             this.Newbutton.ButtonClick += new System.EventHandler(this.Newbutton_ButtonClick);
             // 
             // SaveButton
             // 
             this.SaveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SaveButton.DropDownButtonWidth = 0;
             this.SaveButton.Image = global::NoteGO_app.Properties.Resources.icons8_floppy_disk_68;
             this.SaveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(41, 29);
+            this.SaveButton.Size = new System.Drawing.Size(30, 29);
             this.SaveButton.Text = "toolStripSplitButton2";
             this.SaveButton.ButtonClick += new System.EventHandler(this.SaveButton_ButtonClick);
             // 
             // ReadButton
             // 
             this.ReadButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ReadButton.DropDownButtonWidth = 0;
             this.ReadButton.Image = global::NoteGO_app.Properties.Resources.icons8_binocular_64;
             this.ReadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ReadButton.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ReadButton.Name = "ReadButton";
-            this.ReadButton.Size = new System.Drawing.Size(41, 29);
+            this.ReadButton.Size = new System.Drawing.Size(30, 29);
             this.ReadButton.Text = "toolStripSplitButton1";
             this.ReadButton.ButtonClick += new System.EventHandler(this.ReadButton_ButtonClick);
             // 
             // DeleteButton
             // 
             this.DeleteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.DeleteButton.DropDownButtonWidth = 0;
             this.DeleteButton.Image = global::NoteGO_app.Properties.Resources.icons8_bin_62;
             this.DeleteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(41, 29);
+            this.DeleteButton.Size = new System.Drawing.Size(30, 29);
             this.DeleteButton.Text = "toolStripSplitButton1";
             this.DeleteButton.ButtonClick += new System.EventHandler(this.DeleteButton_ButtonClick);
             // 
@@ -188,8 +196,9 @@ namespace NoteGO_app
             this.darkModeToolStripMenuItem,
             this.lightModeToolStripMenuItem,
             this.positnoteModeToolStripMenuItem});
-            this.VisualButton.Image = ((System.Drawing.Image)(resources.GetObject("VisualButton.Image")));
+            this.VisualButton.Image = global::NoteGO_app.Properties.Resources.icons8_gear_48;
             this.VisualButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.VisualButton.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.VisualButton.Name = "VisualButton";
             this.VisualButton.Size = new System.Drawing.Size(41, 29);
             this.VisualButton.Text = "VisualButton";
@@ -198,21 +207,21 @@ namespace NoteGO_app
             // darkModeToolStripMenuItem
             // 
             this.darkModeToolStripMenuItem.Name = "darkModeToolStripMenuItem";
-            this.darkModeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.darkModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.darkModeToolStripMenuItem.Text = "DarkMode";
             this.darkModeToolStripMenuItem.Click += new System.EventHandler(this.darkModeToolStripMenuItem_Click);
             // 
             // lightModeToolStripMenuItem
             // 
             this.lightModeToolStripMenuItem.Name = "lightModeToolStripMenuItem";
-            this.lightModeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.lightModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.lightModeToolStripMenuItem.Text = "LightMode";
             this.lightModeToolStripMenuItem.Click += new System.EventHandler(this.lightModeToolStripMenuItem_Click);
             // 
             // positnoteModeToolStripMenuItem
             // 
             this.positnoteModeToolStripMenuItem.Name = "positnoteModeToolStripMenuItem";
-            this.positnoteModeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.positnoteModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.positnoteModeToolStripMenuItem.Text = "Post-it Note Mode";
             this.positnoteModeToolStripMenuItem.Click += new System.EventHandler(this.positnoteModeToolStripMenuItem_Click);
             // 
