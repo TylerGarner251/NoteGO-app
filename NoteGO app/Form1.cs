@@ -78,8 +78,27 @@ namespace NoteGO_app
 
         }
         private void Table_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+        {// checks what is selected in the database and addes the title and notes to the not and title boxes
+            int index = Table.CurrentCell.RowIndex;
+            try
+            {
+                if (index > -1)
+                {
+                    String titleVar = table.Rows[index].ItemArray[0].ToString();
+                    string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar;
+                    TitleBox.Text = Path.GetFileName(Savepath);
+                    NotesBox.Text = File.ReadAllText(Savepath);
+                    TitleBox.Enabled = false;
+                }
+            }
+            catch
+            {
+                String titleVar = table.Rows[index].ItemArray[0].ToString();
+                string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar + ".txt";
+                TitleBox.Text = Path.GetFileName(Savepath);
+                NotesBox.Text = File.ReadAllText(Savepath);
+                TitleBox.Enabled = false;
+            }
         }
         private void Newbutton_ButtonClick(object sender, EventArgs e)
         {
@@ -120,27 +139,8 @@ namespace NoteGO_app
             }
         }
         private void ReadButton_ButtonClick(object sender, EventArgs e)
-        {// checks what is selected in the database and addes the title and notes to the not and title boxes
-            int index = Table.CurrentCell.RowIndex;
-            try
-            {
-                if (index > -1)
-                {
-                    String titleVar = table.Rows[index].ItemArray[0].ToString();
-                    string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar;
-                    TitleBox.Text = Path.GetFileName(Savepath);
-                    NotesBox.Text = File.ReadAllText(Savepath);
-                    TitleBox.Enabled = false;
-                }
-            }
-            catch
-            {
-                String titleVar = table.Rows[index].ItemArray[0].ToString();
-                string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar + ".txt";
-                TitleBox.Text = Path.GetFileName(Savepath);
-                NotesBox.Text = File.ReadAllText(Savepath);
-                TitleBox.Enabled = false;
-            }
+        {
+            Table_CellContentClick(ReadButton, null);
         }
         private void DeleteButton_ButtonClick(object sender, EventArgs e)
         {// checks what is selected and deletes the data.
@@ -218,5 +218,10 @@ namespace NoteGO_app
             File.WriteAllText(settingsSave, "positnoteMode");
         }
         #endregion
+
+        private void Searchbar_TextChanged(object sender, EventArgs e)
+        {//reads the search bar and checks the datagrid for character matches and brings up results.
+            (Table.DataSource as DataTable).DefaultView.RowFilter = string.Format("Title LIKE '%{0}%'", Searchbar.Text);
+        }
     }
 }

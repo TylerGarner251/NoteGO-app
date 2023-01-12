@@ -47,6 +47,7 @@ namespace NoteGO_app
             this.label1 = new System.Windows.Forms.Label();
             this.BackgroundWhite = new System.Windows.Forms.PictureBox();
             this.BackgroundCream = new System.Windows.Forms.PictureBox();
+            this.Searchbar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
             this.MenuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundWhite)).BeginInit();
@@ -207,21 +208,21 @@ namespace NoteGO_app
             // darkModeToolStripMenuItem
             // 
             this.darkModeToolStripMenuItem.Name = "darkModeToolStripMenuItem";
-            this.darkModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.darkModeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.darkModeToolStripMenuItem.Text = "DarkMode";
             this.darkModeToolStripMenuItem.Click += new System.EventHandler(this.darkModeToolStripMenuItem_Click);
             // 
             // lightModeToolStripMenuItem
             // 
             this.lightModeToolStripMenuItem.Name = "lightModeToolStripMenuItem";
-            this.lightModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lightModeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.lightModeToolStripMenuItem.Text = "LightMode";
             this.lightModeToolStripMenuItem.Click += new System.EventHandler(this.lightModeToolStripMenuItem_Click);
             // 
             // positnoteModeToolStripMenuItem
             // 
             this.positnoteModeToolStripMenuItem.Name = "positnoteModeToolStripMenuItem";
-            this.positnoteModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.positnoteModeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.positnoteModeToolStripMenuItem.Text = "Post-it Note Mode";
             this.positnoteModeToolStripMenuItem.Click += new System.EventHandler(this.positnoteModeToolStripMenuItem_Click);
             // 
@@ -260,6 +261,15 @@ namespace NoteGO_app
             this.BackgroundCream.TabStop = false;
             this.BackgroundCream.Visible = false;
             // 
+            // Searchbar
+            // 
+            this.Searchbar.Location = new System.Drawing.Point(456, 4);
+            this.Searchbar.Name = "Searchbar";
+            this.Searchbar.Size = new System.Drawing.Size(179, 20);
+            this.Searchbar.TabIndex = 11;
+            this.Searchbar.Text = "Search";
+            this.Searchbar.TextChanged += new System.EventHandler(this.Searchbar_TextChanged);
+            // 
             // NoteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,6 +277,7 @@ namespace NoteGO_app
             this.BackColor = System.Drawing.Color.Silver;
             this.BackgroundImage = global::NoteGO_app.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(635, 438);
+            this.Controls.Add(this.Searchbar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.MenuBar);
             this.Controls.Add(this.Table);
@@ -312,6 +323,7 @@ namespace NoteGO_app
         private System.Windows.Forms.ToolStripMenuItem positnoteModeToolStripMenuItem;
         private System.Windows.Forms.PictureBox BackgroundWhite;
         private System.Windows.Forms.PictureBox BackgroundCream;
+        private System.Windows.Forms.TextBox Searchbar;
     }
 }
 
