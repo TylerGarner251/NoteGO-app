@@ -19,7 +19,7 @@ namespace NoteGO_app.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -93,9 +93,9 @@ namespace NoteGO_app.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_bin_62 {
+        internal static System.Drawing.Bitmap floppydisk {
             get {
-                object obj = ResourceManager.GetObject("icons8_bin_62", resourceCulture);
+                object obj = ResourceManager.GetObject("floppydisk", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace NoteGO_app.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_binocular_64 {
+        internal static System.Drawing.Bitmap icons8_binocular_64_resized {
             get {
-                object obj = ResourceManager.GetObject("icons8_binocular_64", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_binocular_64_resized", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,19 +113,9 @@ namespace NoteGO_app.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_floppy_disk_68 {
+        internal static System.Drawing.Bitmap icons8_gear_48_resized {
             get {
-                object obj = ResourceManager.GetObject("icons8_floppy_disk_68", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_gear_48 {
-            get {
-                object obj = ResourceManager.GetObject("icons8_gear_48", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_gear_48_resized", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +153,29 @@ namespace NoteGO_app.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_note_96 {
+        internal static System.Drawing.Bitmap magnifying_glass1 {
             get {
-                object obj = ResourceManager.GetObject("icons8_note_96", resourceCulture);
+                object obj = ResourceManager.GetObject("magnifying_glass1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NotesNew {
+            get {
+                object obj = ResourceManager.GetObject("NotesNew", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trashcan_resized {
+            get {
+                object obj = ResourceManager.GetObject("trashcan_resized", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
