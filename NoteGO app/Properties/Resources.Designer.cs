@@ -63,36 +63,6 @@ namespace NoteGO_app.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap background {
-            get {
-                object obj = ResourceManager.GetObject("background", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap backgroundcream {
-            get {
-                object obj = ResourceManager.GetObject("backgroundcream", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap backgroundwhite {
-            get {
-                object obj = ResourceManager.GetObject("backgroundwhite", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap floppydisk {
             get {
                 object obj = ResourceManager.GetObject("floppydisk", resourceCulture);
@@ -146,16 +116,6 @@ namespace NoteGO_app.Properties {
         internal static System.Drawing.Bitmap icons8_note_1002 {
             get {
                 object obj = ResourceManager.GetObject("icons8_note_1002", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap magnifying_glass1 {
-            get {
-                object obj = ResourceManager.GetObject("magnifying_glass1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
