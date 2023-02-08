@@ -38,9 +38,9 @@ namespace NoteGO_app.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("14")]
-        public int FontSize {
+        public decimal FontSize {
             get {
-                return ((int)(this["FontSize"]));
+                return ((decimal)(this["FontSize"]));
             }
             set {
                 this["FontSize"] = value;

@@ -5,7 +5,7 @@
     <Setting Name="ThemeOption" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">64, 64, 64</Value>
     </Setting>
-    <Setting Name="FontSize" Type="System.Int32" Scope="User">
+    <Setting Name="FontSize" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">14</Value>
     </Setting>
     <Setting Name="FontColour" Type="System.Drawing.Color" Scope="User">

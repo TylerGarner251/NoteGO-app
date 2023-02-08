@@ -126,38 +126,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\icons8-binocular-64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="resources\icons8-floppy-disk-68.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="resources\icons8-gear-48.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="resources\icons8-note-100.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\icons8-note-100.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\background.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="resources\backgroundcream.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="resources\backgroundwhite.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="icons8-note-100.ico" />
+    <None Include="resources\search.png" />
+    <None Include="resources\Import.png" />
+    <None Include="resources\Export.png" />
     <None Include="resources\trashcan_resized.png" />
     <None Include="resources\icons8-gear-48_resized.png" />
     <None Include="resources\icons8-binocular-64_resized.png" />
     <None Include="resources\NotesNew.png" />
-    <None Include="resources\trashcan.png" />
     <None Include="resources\floppydisk.png" />
-    <None Include="resources\magnifying-glass.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

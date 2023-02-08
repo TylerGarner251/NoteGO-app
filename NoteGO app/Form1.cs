@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace NoteGO_app
@@ -33,7 +36,12 @@ namespace NoteGO_app
             NotesBox.BackColor = set.ThemeOption;
             TitleBox.BackColor = set.ThemeOption;
             Table.BackgroundColor = set.ThemeOption;
+            int FontSize = ((int)set.FontSize);
+            NotesBox.Font = new Font("Microsoft Sans Serif", FontSize);
+            numericUpDown1.Value = set.FontSize;
             panel1.BackColor = set.ThemeOption;
+            panel2.BackColor = set.ThemeOption;
+            Fontsizelabel.ForeColor = set.FontColour;
             NotesBox.ForeColor = set.FontColour;
             TitleBox.ForeColor = set.FontColour;
             Newbutton.ForeColor = set.FontColour;
@@ -94,11 +102,11 @@ namespace NoteGO_app
         private void Table_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {// checks what is selected in the database and addes the title and notes to the not and title boxes
             int index = Table.CurrentCell.RowIndex;
+            String titleVar = table.Rows[index].ItemArray[0].ToString();
             try
             {
                 if (index > -1)
                 {
-                    String titleVar = table.Rows[index].ItemArray[0].ToString();
                     string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar;
                     TitleBox.Text = Path.GetFileName(Savepath);
                     NotesBox.Text = File.ReadAllText(Savepath);
@@ -107,7 +115,6 @@ namespace NoteGO_app
             }
             catch
             {
-                String titleVar = table.Rows[index].ItemArray[0].ToString();
                 string Savepath = AppDomain.CurrentDomain.BaseDirectory + @"\" + titleVar + ".txt";
                 TitleBox.Text = Path.GetFileName(Savepath);
                 NotesBox.Text = File.ReadAllText(Savepath);
@@ -175,6 +182,63 @@ namespace NoteGO_app
         {
             settingsForm1.Show();
             settingsForm1.BringToFront();
+        }
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            set.FontSize = numericUpDown1.Value;
+            set.Save();
+            int FontSize = ((int)set.FontSize);
+            NotesBox.Font = new Font("Microsoft Sans Serif", FontSize);
+
+        }
+        private void ImportButton_Click(object sender, EventArgs e)
+        {
+            //importing File
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK) //opens the save file explore
+            {
+                try
+                {
+                    string ImportPath = Path.GetFullPath(openFileDialog1.FileName); //gets the path the user goes too
+                    string fileName = openFileDialog1.SafeFileName;
+                    string directoryPath = AppDomain.CurrentDomain.BaseDirectory + @"\" + fileName;
+                    System.IO.File.Move(ImportPath, directoryPath);
+                    Thread.Sleep(2000);
+                    refresh();
+                }
+                catch
+                {
+                    MessageBox.Show("Error: Cannot Import, note has already been called the same name " +
+                        "\n please rename your note then try again importing", "ERROR");
+                }
+
+            }
+        }
+        private void ExportButton_Click(object sender, EventArgs e)
+        {
+            if (table.Rows.Count == 0) // detects if a null value is in the rows before allowing export
+            {
+                MessageBox.Show("Error: There is no notes selected");
+            }
+            else
+            {
+                int index = Table.CurrentCell.RowIndex;
+                String titleVar = table.Rows[index].ItemArray[0].ToString();
+                saveFileDialog1.FileName = titleVar; //puts the filename as the title on notes
+                saveFileDialog1.DefaultExt = "txt"; //puts the extension as .txt
+                saveFileDialog1.AddExtension = true;
+                saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                saveFileDialog1.FilterIndex = 1;
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK) //opens the save file explore
+                {
+                    string ExportPath = Path.GetFullPath(saveFileDialog1.FileName); //gets the path the user goes too
+                    StreamWriter strm = File.CreateText(ExportPath); //creates a file in that path
+                    strm.Close(); // close file
+                    File.AppendAllText(ExportPath, NotesBox.Text); //adds notes to the file that was exported
+
+                }
+            }
         }
         #endregion
     }
